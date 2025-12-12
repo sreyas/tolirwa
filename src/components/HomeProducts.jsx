@@ -92,6 +92,7 @@ const HomeProducts = () => {
             <button
               className="absolute top-2 right-2 text-white rounded-3xl bg-black text-2xl p-1 hover:text-gray-300"
               onClick={closeModal}
+              aria-label="close slide"
             >
               <i className="fas fa-times"></i>
             </button>
@@ -99,6 +100,7 @@ const HomeProducts = () => {
             <button
               className="absolute top-1/2 left-2 transform -translate-y-1/2 text-white rounded-3xl bg-black text-2xl p-1 hover:text-gray-300"
               onClick={prevImage}
+              aria-label="Previous slide"
             >
               <i className="fas fa-chevron-left"></i>
             </button>
@@ -106,6 +108,7 @@ const HomeProducts = () => {
             <button
               className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white rounded-3xl bg-black text-2xl p-1 hover:text-gray-300"
               onClick={nextImage}
+              aria-label="next slide"
             >
               <i className="fas fa-chevron-right"></i>
             </button>

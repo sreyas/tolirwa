@@ -117,6 +117,7 @@ const GetQuotes = () => {
                 <button 
                   onClick={handleSubmit}
                   className='w-full bg-[#ef3713] hover:bg-[#ff2c02e0] p-2 rounded-md font-extrabold'
+                  aria-label="submit button"
                 >
                   Submit
                 </button>

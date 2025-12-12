@@ -85,6 +85,7 @@ const SidebarProducts = () => {
             <button
               className="absolute top-[5%] right-[10%] text-white rounded-3xl bg-black text-2xl border-2 border-white p-1 hover:text-gray-300 z-10"
               onClick={closeModal}
+              aria-label="close slide"
             >
               <i className="fas fa-times"></i>
             </button>
@@ -93,6 +94,7 @@ const SidebarProducts = () => {
             <button
               className="absolute left-[2%] transform -translate-y-1/2 text-white rounded-3xl bg-black text-sm  p-1 hover:text-gray-300"
               onClick={prevImage}
+              aria-label="Previous slide"
             >
               <i className="fas fa-chevron-left"></i>
             </button>
@@ -110,6 +112,7 @@ const SidebarProducts = () => {
             <button
               className="absolute right-[2%] transform -translate-y-1/2 text-white rounded-3xl border-2 border-white bg-black text-sm p-1 hover:text-gray-300"
               onClick={nextImage}
+              aria-label="next slide"
             >
               <i className="fas fa-chevron-right"></i>
             </button>

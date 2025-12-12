@@ -87,6 +87,8 @@ const Banner = () => {
             src={slide.image}
             alt={`Slide ${index + 1}`}
             className="w-full h-[50vh] object-cover"
+            priority
+            fetchpriority="high"
           />
 
           <div className="absolute bottom-10 right-0 h-[25%] flex items-center bannerbg">
@@ -119,6 +121,7 @@ const Banner = () => {
       <button
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white w-8 h-8 rounded-full opacity-0 group-hover:opacity-100 hover:bg-black/60 transition"
         onClick={prevSlide}
+        aria-label="Previous slide"
       >
         <i className="fas fa-chevron-left"></i>
       </button>
@@ -126,6 +129,7 @@ const Banner = () => {
       <button
         className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white w-8 h-8 rounded-full opacity-0 group-hover:opacity-100 hover:bg-black/60 transition"
         onClick={nextSlide}
+        aria-label="next slide"
       >
         <i className="fas fa-chevron-right"></i>
       </button>

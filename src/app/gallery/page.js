@@ -151,6 +151,7 @@ const Gallery = () => {
           <button
             onClick={prevImage}
             className="absolute left-4 text-white text-3xl font-bold"
+            aria-label="Previous slide"
           >
             &#10094;
           </button>
@@ -162,12 +163,14 @@ const Gallery = () => {
           <button
             onClick={nextImage}
             className="absolute right-4 text-white text-3xl font-bold"
+            aria-label="Next slide"
           >
             &#10095;
           </button>
           <button
             onClick={closeModal}
             className="absolute top-4 right-4 text-white text-2xl font-bold"
+            aria-label="close button"
           >
             &times;
           </button>
