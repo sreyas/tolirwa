@@ -91,8 +91,8 @@ const Contact = () => {
 if(loading) return <Loader />;
   return (
     <div className='flex justify-center w-full mb-8'>
-      <div className='w-full max-w-5xl px-5'>
-        <h1 className='text-gray-600 text-3xl font-bold mt-8 mb-2'>{contactUs.title}</h1>
+      <div className='margintop w-full max-w-5xl px-5'>
+        <h1 className='text-gray-600 text-3xl font-bold mb-2'>{contactUs.title}</h1>
      
         {/* Main Layout */}
         <div className="flex flex-col lg:flex-row gap-6">
@@ -169,14 +169,14 @@ if(loading) return <Loader />;
         </div>
       </div>
 
-      <div className='absolute left-0 top-[80%]'>
+      {/* <div className='absolute left-0 top-[80%]'>
           <Link href='/get-quotes'>
             <img 
               src="https://www.tolirwa.com/wp-content/uploads/2014/06/get-aquote.png"
               alt="Get a quote"
             />
           </Link>
-      </div>
+      </div> */}
 
     </div>
   )

@@ -95,10 +95,10 @@ const Home = () => {
     {popUp && <HomePagePopup popUp={popUp} onClose={() => setPopUp(false)} />}
 
 
-      <div className="w-full flex items-center justify-center p-10 flex-col gap-16">
+      <div className="margintop w-full flex items-center justify-center p-10 flex-col gap-16">
 
 
-      <div className='absolute left-0 top-[60%] 
+      {/* <div className='absolute left-0 top-[60%] 
       lg:top-[65%]
             xl:top-[70%]
             2xl:absolute 2xl:top-[80%] '>
@@ -108,19 +108,19 @@ const Home = () => {
                   alt="Get a quote"
                 />
               </Link>
-            </div>
+            </div> */}
 
 
-        <div className="homeContent w-[95%] flex flex-col h-auto 
+        <div className="margintop homeContent w-[95%] flex flex-col h-auto 
         md:flex-row 
-        xl:w-[55%]">
+        xl:w-[70%]">
 
           <div className="cnt-Col-1 w-full p-3 
                        sm:p-8
                        md:p-3
                        xl:px-10 xl:pb-14">
-             <h2 className='text-[#333] text-[22px] font-bold'>{structuredContent[1]?.text[0]?.text}</h2>
-             <h3 className='text-[#DD3737] font-bold  text-[30px] '>{structuredContent[1]?.text[1]?.text}</h3>
+             <h2 className='text-[#333] text-[22px] font-bold mt-[-10px] mb-4'>{structuredContent[1]?.text[0]?.text}</h2>
+             <h3 className='text-[#DD3737] font-bold  text-[30px] mb-2'>{structuredContent[1]?.text[1]?.text}</h3>
              <p className='text-[#56565A] text-[14px]
              md:text-[12px]
              xl:text-[13px]'>{structuredContent[1]?.text[2]?.text}</p>

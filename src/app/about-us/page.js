@@ -44,7 +44,7 @@ const About = () => {
   return (
     <div>
       
-        <div className=' left-0 
+        {/* <div className=' left-0 
         2xl:absolute 2xl:top-[80%] 2xl:left-0'>
           <Link href='/get-quotes'>
             <img 
@@ -52,9 +52,9 @@ const About = () => {
               alt="Get a quote"
             />
           </Link>
-        </div>
+        </div> */}
 
-      <div className="about_cvr w-full h-auto p-5 bg-[#EEEE] 
+      <div className="margintop about_cvr w-full h-auto  bg-[#EEEE] 
       md:bg-white md:flex md:items-center md:justify-center
       ">
         <div className="about_content w-full flex flex-col items-center justify-center gap-5

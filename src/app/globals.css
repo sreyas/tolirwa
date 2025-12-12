@@ -37,6 +37,19 @@ body {
 .bannerbg {
   width: 35%;
 }
+.margintop{
+  margin-top: -30px;
+}
+@media (max-width: 1299px) {
+  .margintop {
+    margin-top: 10px;
+  }
+}
+@media (min-width: 1535px) {
+  .margintop {
+    margin-top: 20px;
+  }
+}
 
 @media (max-width: 400px) {
   .slide-title {

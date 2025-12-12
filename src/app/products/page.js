@@ -116,9 +116,9 @@ const Products = () => {
 
   
 
-      <div className="w-full max-w-5xl px-5">
+      <div className="margintop w-full max-w-5xl px-5">
 
-            <div className=' left-0 
+            {/* <div className=' left-0 
             2xl:absolute 2xl:top-[80%] '>
               <Link href='/get-quotes'>
                 <img 
@@ -126,10 +126,10 @@ const Products = () => {
                   alt="Get a quote"
                 />
               </Link>
-            </div>
+            </div> */}
 
 
-        <h1 className="text-gray-600 text-3xl font-bold mt-8 mb-7">Products</h1>
+        <h1 className="text-gray-600 text-3xl font-bold mb-7">Products</h1>
 
         <div className="flex flex-col lg:flex-row gap-6">
           {/* LEFT COLUMN */}

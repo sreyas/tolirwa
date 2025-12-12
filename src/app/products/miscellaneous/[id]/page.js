@@ -83,10 +83,10 @@ export default function MiscellaneousDetails({ params }) {
 
   return (
     <div className="flex justify-center w-full mb-8">
-      <div className="w-full max-w-5xl px-5">
+      <div className="margintop w-full max-w-5xl px-5">
 
 
-            <div className=' left-0 
+            {/* <div className=' left-0 
             2xl:absolute 2xl:top-[80%] '>
               <Link href='/get-quotes'>
                 <img 
@@ -94,10 +94,10 @@ export default function MiscellaneousDetails({ params }) {
                   alt="Get a quote"
                 />
               </Link>
-            </div>
+            </div> */}
 
 
-        <h1 className="text-gray-600 text-3xl font-bold mt-8 mb-7">
+        <h1 className="text-gray-600 text-3xl font-bold mb-7">
           {miscellaneousByID.title}
         </h1>
 

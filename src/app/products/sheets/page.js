@@ -86,10 +86,10 @@ if(loading) return <Loader/>
 
   return (
     <div className="flex justify-center w-full mb-8">
-      <div className="w-full max-w-5xl px-5">
+      <div className="margintop w-full max-w-5xl px-5">
 
 
-            <div className=' left-0 
+            {/* <div className=' left-0 
             2xl:absolute 2xl:top-[80%] '>
               <Link href='/get-quotes'>
                 <img 
@@ -97,11 +97,11 @@ if(loading) return <Loader/>
                   alt="Get a quote"
                 />
               </Link>
-            </div>
+            </div> */}
 
 
 
-        <h1 className="text-gray-600 text-3xl font-bold mt-8 mb-7">{sheets.title}</h1>
+        <h1 className="text-gray-600 text-3xl font-bold mb-7">{sheets.title}</h1>
 
         {/* Main Layout */}
         <div className="flex flex-col lg:flex-row gap-8">

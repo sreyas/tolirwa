@@ -6,6 +6,7 @@
   import Footer from '@/components/Footer'
   import Banner from '@/components/Banner'
   import React from 'react'
+import Quotebar from "@/components/Quotebar";
 
     export const metadata = {
     title: "Tolirwa Ltd",
@@ -48,6 +49,7 @@
 
         <Header />
         <Banner />
+        <Quotebar/>
         {children}
         <Footer />
       </body>
