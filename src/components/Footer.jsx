@@ -47,7 +47,7 @@ const Footer = () => {
           {/* Right Column - Social Media */}
           <div className="w-full md:w-1/2 flex justify-center md:justify-end space-x-4">
             <a 
-              href="#" 
+              href="https://www.facebook.com/people/Tolirwa-Ltd/100054428262569/"
               className="flex justify-center items-center text-[#929292] hover:text-white hover:bg-[#EF3713] bg-[#555555] w-9 h-9 rounded-full"
               aria-label="Tolirwa Ltd Facebook page"
             >
@@ -56,9 +56,9 @@ const Footer = () => {
             </a>
 
             <a 
-              href="#" 
+              href="https://www.linkedin.com/company/tolirwa-ltd"
               className="flex justify-center items-center text-[#929292] hover:text-white hover:bg-[#EF3713] bg-[#555555] w-9 h-9 rounded-full"
-              aria-label="Tolirwa Ltd Linkedin page"
+              aria-label="Tolirwa Ltd LinkedIn page"
             >
               <span className="sr-only">LinkedIn</span>
               <i className="fab fa-linkedin-in"></i>

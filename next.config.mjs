@@ -4,6 +4,9 @@ const nextConfig = {
   experimental: {
     appDir: true, // ✅ ensures Next.js uses the App Router system
   },
+  images: {
+    domains: ['www.tolirwa.com'], 
+  },
 };
 
 export default nextConfig;

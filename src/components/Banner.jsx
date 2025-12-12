@@ -89,6 +89,8 @@ const Banner = () => {
             className="w-full h-[50vh] object-cover"
             priority
             fetchPriority="high"
+            width={1350}        
+            height={496} 
           />
 
           <div className="absolute bottom-10 right-0 h-[25%] flex items-center bannerbg">
