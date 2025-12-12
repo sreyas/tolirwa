@@ -88,7 +88,7 @@ const Banner = () => {
             alt={`Slide ${index + 1}`}
             className="w-full h-[50vh] object-cover"
             priority
-            fetchpriority="high"
+            fetchPriority="high"
           />
 
           <div className="absolute bottom-10 right-0 h-[25%] flex items-center bannerbg">

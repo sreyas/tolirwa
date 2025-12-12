@@ -163,7 +163,7 @@ return true;
         </div>
 
         {/* Mobile hamburger */}
-        <button className="md:hidden text-3xl text-[#ef3713]" onClick={() => {
+        <button className="md:hidden text-3xl text-[#ef3713]" aria-label="Open menu" onClick={() => {
             setMenuOpen(!menuOpen);
             setOpenSubmenu(null);}}>
           <i className="fa-solid fa-bars"></i>
