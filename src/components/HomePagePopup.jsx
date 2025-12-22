@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import { FontAwesomeIcon, solidIcons } from "@/icons/icons";
 
 const HomePagePopup = ({ popUp, onClose }) => {
 
@@ -23,7 +24,12 @@ const HomePagePopup = ({ popUp, onClose }) => {
     <div className="closeBtn w-full h-[10%] flex items-center justify-end 
     md:p-14
     2xl:pr-[30%]">
-      <i className="fa-solid fa-xmark fa-2xl"  onClick={onClose} style={{color: '#fafafa'}}></i>
+      <button onClick={onClose} aria-label="Close popup" className="text-white hover:opacity-80 transition">
+        <FontAwesomeIcon
+          icon={solidIcons.faXmark}
+          size="2x"
+        />
+      </button>
     </div>
 <div className="commonDiv relative flex flex-col items-center justify-center">
       <div className="firstDiv absolute left-[5%] p-5   top-[-10px] w-[150px] h-[150px] bg-[#ef3713] text-white rounded-full flex flex-col items-center justify-center text-center  z-20

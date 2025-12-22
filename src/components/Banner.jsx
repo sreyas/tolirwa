@@ -4,6 +4,7 @@ import { FETCH_SLIDER_IMAGES } from "@/lib/ApiPath";
 import client from "@/lib/apollo-client";
 import React, { useState, useEffect } from "react";
 import Image from 'next/image';
+import { FontAwesomeIcon, solidIcons } from '@/icons/icons';
 
 const Banner = () => {
   const [slides, setSlides] = useState([]);
@@ -135,7 +136,7 @@ const Banner = () => {
         onClick={prevSlide}
         aria-label="Previous slide"
       >
-        <i className="fas fa-chevron-left"></i>
+        <FontAwesomeIcon icon={solidIcons.faChevronLeft} aria-hidden="true" />
       </button>
 
       <button
@@ -143,7 +144,7 @@ const Banner = () => {
         onClick={nextSlide}
         aria-label="next slide"
       >
-        <i className="fas fa-chevron-right"></i>
+        <FontAwesomeIcon icon={solidIcons.faChevronRight} aria-hidden="true" />
       </button>
     </div>
   );

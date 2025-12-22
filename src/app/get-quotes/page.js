@@ -1,7 +1,9 @@
 "use client"
  
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import SidebarProducts from '@/components/SidebarProducts';
+import { FETCH_GET_QUOTES } from '@/lib/ApiPath';
+import client from '@/lib/apollo-client';
 import Link from 'next/link';
 
 const GetQuotes = () => {
@@ -17,6 +19,30 @@ const GetQuotes = () => {
 
   const [errors, setErrors] = useState({});
   const [showValidationError, setShowValidationError] = useState(false);
+  const [qetOuotes, setGetQuotes] = useState(""); 
+
+
+  const fetchgetQuotes = async () => {
+    try {
+       const res = await client.query({
+            query: FETCH_GET_QUOTES,
+           });
+
+          console.log("Res raw",res.data);
+           
+    } catch (error) {
+      console.error("Error fetching get quotes:", error);
+    }
+  }
+
+
+  useEffect(() => {
+    fetchgetQuotes();
+  },[])
+
+
+
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;

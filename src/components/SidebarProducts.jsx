@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { FontAwesomeIcon, solidIcons } from '@/icons/icons';
 
 const SidebarProducts = () => {
   const products = [
@@ -87,7 +88,7 @@ const SidebarProducts = () => {
               onClick={closeModal}
               aria-label="close slide"
             >
-              <i className="fas fa-times"></i>
+              <FontAwesomeIcon icon={solidIcons.faTimes} />
             </button>
 
           <div className="relative flex justify-center items-center w-[80%] h-[90%]  ">
@@ -96,7 +97,7 @@ const SidebarProducts = () => {
               onClick={prevImage}
               aria-label="Previous slide"
             >
-              <i className="fas fa-chevron-left"></i>
+              <FontAwesomeIcon icon={solidIcons.faChevronLeft} />
             </button>
 
             <img
@@ -114,7 +115,7 @@ const SidebarProducts = () => {
               onClick={nextImage}
               aria-label="next slide"
             >
-              <i className="fas fa-chevron-right"></i>
+              <FontAwesomeIcon icon={solidIcons.faChevronRight} />
             </button>
           </div>
         </div>

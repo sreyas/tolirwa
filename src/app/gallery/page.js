@@ -99,15 +99,6 @@ const Gallery = () => {
     <div className='flex justify-center w-full mb-8'>
       <div className='margintop w-full max-w-5xl px-5'>
 
-    {/* <div className=' left-0 
-            2xl:absolute 2xl:top-[80%] 2xl:left-0'>
-              <Link href='/get-quotes'>
-                <img 
-                  src="https://www.tolirwa.com/wp-content/uploads/2014/06/get-aquote.png"
-                  alt="Get a quote"
-                />
-              </Link>
-            </div> */}
 
 
         <h1 className='text-gray-600 text-3xl font-bold mb-7'>{gallery.title}</h1>

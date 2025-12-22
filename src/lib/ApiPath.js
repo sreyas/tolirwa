@@ -318,6 +318,19 @@ query  {
 `
 
 
+export const FETCH_GET_QUOTES=gql`
+query {
+  pages(where: {nameIn: "get-a-quote"}) {
+    nodes {
+      content
+      slug
+      title(format: RENDERED)
+    }
+  }
+}
+`
+
+
 
 
 

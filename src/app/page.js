@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react'
+import { FontAwesomeIcon, brandIcons } from '@/icons/icons';
 import client from "@/lib/apollo-client";
 import { HOME_PAGE_CONTENT } from '@/lib/ApiPath';
 import Loader from "@/components/Loader";
@@ -174,15 +175,15 @@ const Home = () => {
           <span className='w-[50px] h-[50px] bg-[#EEE] hover:bg-[#ef3713] text-[#929292] hover:text-white rounded-full flex items-center justify-center
           xl:w-[80px] xl:h-[80px]'>
             <Link href={`https://www.facebook.com/people/Tolirwa-Ltd/100054428262569/#`}>
-              <i className="fa-brands fa-facebook-f fa-xl"  ></i>
+              <FontAwesomeIcon icon={brandIcons.faFacebookF} size="xl" aria-hidden="true" />
             </Link>
           </span>
           <span className='w-[50px] h-[50px] bg-[#EEE] hover:bg-[#ef3713] text-[#929292] hover:text-white rounded-full flex items-center justify-center
            xl:w-[80px] xl:h-[80px]'>
           <Link href={`https://www.facebook.com/people/Tolirwa-Ltd/100054428262569/#`}>
-            <i className="fa-brands fa-linkedin-in fa-xl" ></i>
+            <FontAwesomeIcon icon={brandIcons.faLinkedinIn} size="xl" aria-hidden="true" />
           </Link>
-            </span>
+          </span>
      
 
         </div>

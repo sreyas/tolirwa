@@ -7,6 +7,11 @@ import Banner from '@/components/Banner'
 import React from 'react'
 import Quotebar from "@/components/Quotebar";
 
+// Font Awesome setup
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false;
+
     export const metadata = {
     title: "Tolirwa Ltd",
     description: "Tolirwa Ltd – established in 1978, market leader in roofing sheets and allied products across Rwanda & East Africa. Rust-proof, high quality roofing solutions.",

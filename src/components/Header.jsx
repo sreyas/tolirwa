@@ -5,6 +5,7 @@ import client from "@/lib/apollo-client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { FontAwesomeIcon, solidIcons } from "@/icons/icons";
 
 const Header = () => {
   const [mainMenus, setMainMenus] = useState([]);
@@ -15,12 +16,13 @@ const Header = () => {
   const pathname = usePathname();
 
   const iconMap = [
-    { name: "Home", Icon: "fa-solid fa-house", slug: "/" },
-    { name: "About us", Icon: "fa-solid fa-info", slug: "/about" },
-    { name: "Gallery", Icon: "fas fa-image", slug: "/gallery" },
-    { name: "Products", Icon: "fa-solid fa-recycle", slug: "/products" },
-    { name: "Contact Us", Icon: "fas fa-phone", slug: "/contact-us" },
+    { name: "Home", Icon: solidIcons.faHouse, slug: "/" },
+    { name: "About us", Icon: solidIcons.faInfo, slug: "/about" },
+    { name: "Gallery", Icon: solidIcons.faImage, slug: "/gallery" },
+    { name: "Products", Icon: solidIcons.faRecycle, slug: "/products" },
+    { name: "Contact Us", Icon: solidIcons.faPhone, slug: "/contact-us" },
   ];
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +46,7 @@ const Header = () => {
 
         menuMap[item.id] = {
           ...item,
-          Icon: iconItem ? iconItem.Icon : "fa-solid fa-circle",
+          Icon: iconItem ? iconItem.Icon : solidIcons.faCircle,
           children: [],
         };
       });
@@ -141,7 +143,7 @@ return true;
               >
               
                 <Link href={menu.path} className="text-[13px] flex flex-col items-center justify-center">
-                  <i className={`${menu.Icon} text-xl`}></i>
+                  <FontAwesomeIcon icon={menu.Icon}  className="text-xl mb-1" aria-hidden="true"/>
                   {menu.label}
                 </Link>
 
@@ -166,7 +168,7 @@ return true;
         <button className="md:hidden text-3xl text-[#ef3713]" aria-label="Open menu" onClick={() => {
             setMenuOpen(!menuOpen);
             setOpenSubmenu(null);}}>
-          <i className="fa-solid fa-bars"></i>
+          <FontAwesomeIcon icon={solidIcons.faBars} />
         </button>
       </div>
 
@@ -186,13 +188,19 @@ return true;
                   </Link>
 
                   {menu.children.length > 0 && (
-                    <i
-                      className={`fa-solid fa-chevron-${openSubmenu === menu.id ? "up" : "down"}`}
+                    <FontAwesomeIcon
+                      icon={
+                        openSubmenu === menu.id
+                          ? solidIcons.faChevronUp
+                          : solidIcons.faChevronDown
+                      }
+                      className="cursor-pointer text-lg"
                       onClick={(e) => {
-                        e.stopPropagation(); 
+                        e.stopPropagation();
                         setOpenSubmenu(openSubmenu === menu.id ? null : menu.id);
                       }}
-                    ></i>
+                      aria-hidden="true"
+                    />
                   )}
                 </div>
 

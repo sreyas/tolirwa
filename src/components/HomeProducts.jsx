@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react'
+import { FontAwesomeIcon, solidIcons } from '@/icons/icons';
 
 const HomeProducts = () => {
 
@@ -94,7 +95,7 @@ const HomeProducts = () => {
               onClick={closeModal}
               aria-label="close slide"
             >
-              <i className="fas fa-times"></i>
+              <FontAwesomeIcon icon={solidIcons.faTimes} />
             </button>
 
             <button
@@ -102,7 +103,7 @@ const HomeProducts = () => {
               onClick={prevImage}
               aria-label="Previous slide"
             >
-              <i className="fas fa-chevron-left"></i>
+              <FontAwesomeIcon icon={solidIcons.faChevronLeft} />
             </button>
 
             <button
@@ -110,7 +111,7 @@ const HomeProducts = () => {
               onClick={nextImage}
               aria-label="next slide"
             >
-              <i className="fas fa-chevron-right"></i>
+              <FontAwesomeIcon icon={solidIcons.faChevronRight} />
             </button>
           </div>
         </div>

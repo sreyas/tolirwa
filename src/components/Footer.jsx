@@ -1,5 +1,7 @@
 "use client";
 import React from 'react'
+import { FontAwesomeIcon, solidIcons, brandIcons } from '@/icons/icons';
+
 
 const Footer = () => {
   return (
@@ -16,7 +18,9 @@ const Footer = () => {
           <table className='mt-5 text-[#b8b8b8] w-full sm:w-[50%] md:w-[35%]'>
             <tbody>
               <tr>
-                <td><i className="fa fa-phone text-sm font-bold"></i> <strong className='text-sm font-bold'>Tel</strong></td>
+                <td>
+                  <FontAwesomeIcon icon={solidIcons.faPhone} className="text-sm font-bold mr-1" aria-hidden="true"/>
+                  <strong className='text-sm font-bold'>Tel</strong></td>
                 <td><span className='text-sm'>: +250 78830 2990</span></td>
               </tr>
               <tr>
@@ -24,7 +28,9 @@ const Footer = () => {
                 <td><span className='text-sm'>: +250 78851 5964</span></td>
               </tr>
               <tr>
-                <td><i className="fa fa-envelope text-sm font-bold"></i> <strong className='text-sm font-bold'>Email</strong></td>
+                <td>
+                  <FontAwesomeIcon icon={solidIcons.faEnvelope} className="text-sm font-bold mr-1" aria-hidden="true"/>
+                  <strong className='text-sm font-bold'>Email</strong></td>
                 <td><span className='text-sm'>: sales@tolirwa.com <br />: tolirwa@tolirwa.com</span></td>
               </tr>
             </tbody>
@@ -52,7 +58,7 @@ const Footer = () => {
               aria-label="Tolirwa Ltd Facebook page"
             >
               <span className="sr-only">Facebook</span>
-              <i className="fab fa-facebook-f" aria-hidden="true"></i>
+              <FontAwesomeIcon icon={brandIcons.faFacebookF}  aria-hidden="true"/>
             </a>
 
             <a 
@@ -61,7 +67,7 @@ const Footer = () => {
               aria-label="Tolirwa Ltd LinkedIn page"
             >
               <span className="sr-only">LinkedIn</span>
-              <i className="fab fa-linkedin-in" aria-hidden="true"></i>
+              <FontAwesomeIcon icon={brandIcons.faLinkedinIn}  aria-hidden="true"/>
             </a>
           </div>
         </div>
