@@ -28,7 +28,7 @@ const GetQuotes = () => {
             query: FETCH_GET_QUOTES,
            });
 
-          console.log("Res raw",res.data);
+          console.log("Res raw",res.data.pages);
            
     } catch (error) {
       console.error("Error fetching get quotes:", error);
