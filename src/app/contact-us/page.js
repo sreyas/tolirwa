@@ -21,7 +21,7 @@ const Contact = () => {
          const res = await client.query({
             query: CONTACT_US_CONTENT,
            });
-            console.log(res.data.pageBy);
+            console.log("raw Data",res.data.pageBy);
             const contactData = res.data.pageBy;
             const formatted = formatContactContent(contactData);
             console.log("For",formatted);
@@ -35,41 +35,70 @@ const Contact = () => {
   }
 
 
-  const formatContactContent = (pageData) => {
+const formatContactContent = (pageData) => {
   try {
     const raw = pageData?.content || "";
 
-    // 1. Extract the Google Map iframe URL
+    // Map
     const mapMatch = raw.match(/src="([^"]*google[^"]*)"/);
     const mapUrl = mapMatch ? mapMatch[1] : "";
 
-    // 2. Extract company name
+    // Company
     const companyMatch = raw.match(/<h4><b>(.*?)<\/b><\/h4>/);
     const company = companyMatch ? companyMatch[1] : "";
 
-    // 3. Extract address block
+    // Address
     const addressMatch = raw.match(/<h4><b>.*?<\/h4>\s*<p>(.*?)<\/p>/s);
-    let addressLines = [];
+    let address = [];
 
     if (addressMatch) {
-      addressLines = addressMatch[1]
+      address = addressMatch[1]
         .replace(/<br\s*\/?>/g, "\n")
         .replace(/&nbsp;/g, "")
         .split("\n")
         .map(line => line.trim())
-        .filter(line => line.length > 0);
+        .filter(Boolean);
     }
 
-    // 4. Extract phone numbers
-    const phoneMatches = [...raw.matchAll(/:\s?\+?[0-9\s]+/g)];
-    const phones = [...raw.matchAll(/:\s?\+?[0-9\s]+/g)]
-      .map(m => m[0].replace(":", "").trim())
-      .filter(p => p.startsWith("+250"));
+    // 🔹 Contact rows (Tel / Kinyarwanda / Email)
+   // 🔹 Contact rows (with icon)
+const contactRows = [];
+const rowRegex = /<tr>\s*<td>(.*?)<\/td>\s*<td>(.*?)<\/td>\s*<\/tr>/gs;
 
+let match;
+while ((match = rowRegex.exec(raw)) !== null) {
+  const labelHtml = match[1];
+  const valueHtml = match[2];
 
-    // 5. Extract emails
-    const emailMatches = [...raw.matchAll(/[\w.-]+@[\w.-]+\.\w+/g)];
-    const emails = emailMatches.map(m => m[0]);
+  // Extract icon class (if exists)
+  const iconMatch = labelHtml.match(/<i[^>]*class="([^"]+)"/);
+  const iconClass = iconMatch ? iconMatch[1] : null;
+
+  console.log("iconClassName",iconClass);
+  
+
+  // Extract label text
+  const label = labelHtml
+    .replace(/<[^>]*>/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  // Extract values
+  const values = valueHtml
+    .replace(/<br\s*\/?>/g, "\n")
+    .replace(/:/g, "")
+    .replace(/&nbsp;/g, "")
+    .split("\n")
+    .map(v => v.trim())
+    .filter(Boolean);
+
+  contactRows.push({
+    label,
+    iconClass,
+    value: values
+  });
+}
+
 
     return {
       title: pageData.title,
@@ -77,9 +106,8 @@ const Contact = () => {
       uri: pageData.uri,
       mapUrl,
       company,
-      address: addressLines,
-      phones,
-      emails
+      address,
+      contactRows
     };
 
   } catch (err) {
@@ -120,46 +148,35 @@ if(loading) return <Loader />;
           </div>
 
             {/* Contact Table */}
-            <table className="mt-5 w-full sm:w-[70%]">
-              <tbody>
-                <tr>
-                  <td>
-                    <i className="fa fa-phone text-[#ef3713] text-xl font-bold"></i>{" "}
-                    <strong className="text-[#ef3713] text-xl font-bold">Tel</strong>
-                  </td>
-                  <td>
-                    <span className="text-lg text-gray-700">:  {contactUs.phones?.[1]}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong className="text-[#ef3713] text-xl font-bold">
-                      Kinyarwanda/<br />French
-                    </strong>
-                  </td>
-                  <td>
-                    <span className="text-lg text-gray-700">: {contactUs.phones?.[1]}</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <i className="fa fa-envelope text-[#ef3713] text-xl font-bold"></i>{" "}
-                    <strong className="text-[#ef3713] text-xl font-bold">Email</strong>
-                  </td>
-                  <td>
-                  <span className="text-lg text-gray-700">
-                    {contactUs.emails?.map((email, i) => (
-                      <React.Fragment key={i}>
-                        : {email}
-                        {i !== contactUs.emails.length - 1 && <br />}
-                      </React.Fragment>
-                    ))}
-                  </span>
+         <table className="mt-5 w-full sm:w-[70%]">
+  <tbody>
+    {contactUs.contactRows?.map((row, index) => (
+      <tr key={index}>
+        <td className="w-[30%] py-2">
+          <div className="flex items-center   gap-2">
+            {row.iconClass && (
+              <i className={`${row.iconClass} text-[#ef3713] text-xl`} />
+            )}
+            <strong className="text-[#ef3713] text-xl font-bold">
+              {row.label}
+            </strong>
+          </div>
+        </td>
 
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <td className="py-2 text-lg text-gray-700">
+          {row.value.map((v, i) => (
+            <React.Fragment key={i}>
+              : {v}
+              {i !== row.value.length - 1 && <br />}
+            </React.Fragment>
+          ))}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+
           </div>
 
           {/* Right Column */}

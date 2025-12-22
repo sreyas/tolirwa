@@ -24,7 +24,7 @@ const Gallery = () => {
        const res = await client.query({
             query: GALLERY_PAGE_CONTENT,
            });
-           console.log(res.data.pageBy);
+           console.log("raw data in gallery",res.data.pageBy);
            const galleryData = res.data.pageBy;
              formattedGallery(galleryData);
 
@@ -110,7 +110,7 @@ const Gallery = () => {
             </div> */}
 
 
-        <h1 className='text-gray-600 text-3xl font-bold mb-7'>Gallery</h1>
+        <h1 className='text-gray-600 text-3xl font-bold mb-7'>{gallery.title}</h1>
 
         {/* Main Layout */}
         <div className="flex flex-col lg:flex-row gap-6">
