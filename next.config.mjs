@@ -5,7 +5,7 @@ const nextConfig = {
     appDir: true, // ✅ ensures Next.js uses the App Router system
   },
   images: {
-    domains: ['www.tolirwa.com'], 
+    domains: ['www.tolirwa.com', 'dev.tolirwa.com']
   },
 };
 
