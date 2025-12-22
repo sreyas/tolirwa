@@ -52,7 +52,7 @@ const Footer = () => {
               aria-label="Tolirwa Ltd Facebook page"
             >
               <span className="sr-only">Facebook</span>
-              <i className="fab fa-facebook-f"></i>
+              <i className="fab fa-facebook-f" aria-hidden="true"></i>
             </a>
 
             <a 
@@ -61,7 +61,7 @@ const Footer = () => {
               aria-label="Tolirwa Ltd LinkedIn page"
             >
               <span className="sr-only">LinkedIn</span>
-              <i className="fab fa-linkedin-in"></i>
+              <i className="fab fa-linkedin-in" aria-hidden="true"></i>
             </a>
           </div>
         </div>

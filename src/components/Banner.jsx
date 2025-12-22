@@ -3,6 +3,7 @@
 import { FETCH_SLIDER_IMAGES } from "@/lib/ApiPath";
 import client from "@/lib/apollo-client";
 import React, { useState, useEffect } from "react";
+import Image from 'next/image';
 
 const Banner = () => {
   const [slides, setSlides] = useState([]);
@@ -83,12 +84,22 @@ const Banner = () => {
             index === current ? "opacity-100 blur-0" : "opacity-0 blur-sm"
           }`}
         >
-          <img
+          {/* <img
             src={slide.image}
             alt={`Slide ${index + 1}`}
             className="w-full h-[50vh] object-cover"
+            width="1200" 
+            height="600" 
             priority
             fetchPriority="high"
+          /> */}
+          <Image
+            src={slide.image}
+            alt={`Slide ${index + 1}`}
+            width={1200}
+            height={600}
+            className="w-full h-[50vh] object-cover"
+            priority 
           />
 
           <div className="absolute bottom-10 right-0 h-[25%] flex items-center bannerbg">
