@@ -27,18 +27,18 @@ const HomePagePopup = ({ popUp, onClose }) => {
     </div>
 <div className="commonDiv relative flex flex-col items-center justify-center">
       <div className="firstDiv absolute left-[5%] p-5   top-[-10px] w-[150px] h-[150px] bg-[#ef3713] text-white rounded-full flex flex-col items-center justify-center text-center  z-20
-      sm:left-[10%] sm:w-[200px] sm:h-[200px]
+      sm:left-[10%] sm:w-[220px] sm:h-[220px]
       md:left-[20%]
       lg:left-[30%]
        2xl:w-[200px] 2xl:h-[200px] 2xl:top-[30%] 2xl:left-[33%]">
-      <h1 className="text-[20px] font-bold">NOW WE ARE AT:</h1>
-      <p className="text-[14px]">Kigali Special Economic Zone</p>
+      <h1 className="text-[15px] sm:text-[23px] md:text-[28px] lg:text-[35px] font-bold">NOW WE ARE AT:</h1>
+      <p className="text-[10px] sm:text-[14px] md:text-[14px] lg:text-[14px]">Kigali Special Economic Zone</p>
     </div>
      <div className="secondDiv absolute top-[60px] left-[28%] p-4 w-[250px] h-[250px] bg-white rounded-full flex flex-col items-center justify-center text-center z-10
-     sm:top-[90px] sm:left-[30%] sm:w-[300px] sm:h-[300px]
+     sm:top-[90px] sm:left-[30%] sm:w-[330px] sm:h-[330px]
      md:left-[40%]
       2xl:w-[350px] 2xl:h-[350px]">
-      <h1  className="text-[35px] font-bold text-[#FF8044]" >Tolirwa Ltd</h1>
+      <h1  className="text-[37px] font-bold text-[#FF8044]" >Tolirwa Ltd</h1>
       <p className="text-[14px]">PLOT E9, <br />KIGALI SPECIAL ECONOMIC ZONE. <br />MASORO <br />POST BOX 521, KIGALI, RWANDA.</p>
 
      </div>

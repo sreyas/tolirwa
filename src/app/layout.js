@@ -1,14 +1,11 @@
   // app/layout.js
 
-  import "./globals.css";
-
+import "./globals.css";
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Banner from '@/components/Banner'
 import React from 'react'
 import Quotebar from "@/components/Quotebar";
-import Head from "next/head";
-
 
     export const metadata = {
     title: "Tolirwa Ltd",
@@ -40,10 +37,6 @@ import Head from "next/head";
   const Layout = ({ children }) => {
     return (
       <html lang="en">
-        <head>
-        <link rel="preconnect" href="https://dev.tolirwa.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://tolirwa.com" crossOrigin="anonymous" />
-      </head>
         <body>
         <link
           rel="stylesheet"
