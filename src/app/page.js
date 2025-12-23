@@ -24,7 +24,7 @@ const Home = () => {
         query: HOME_PAGE_CONTENT,
       });
       const pageData = res.data.pageBy;
-      // console.log("HOME PAGE DATA:", pageData.content);
+      console.log("HOME PAGE DATA:", pageData.content);
       if (pageData?.content) {
         const structured = parseHtmlToStructuredObjects(pageData.content);
         setStructuredContent(structured);

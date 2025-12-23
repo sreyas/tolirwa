@@ -7,113 +7,118 @@ import client from '@/lib/apollo-client';
 import Link from 'next/link';
 
 const GetQuotes = () => {
-  const [formData, setFormData] = useState({
-    companyName: '',
-    contactPerson: '',
-    contactNumber: '',
-    mobileNumber: '',
-    email: '',
-    subject: '',
-    enquiryDetails: ''
-  });
+ 
 
-  const [errors, setErrors] = useState({});
-  const [showValidationError, setShowValidationError] = useState(false);
-  const [qetOuotes, setGetQuotes] = useState(""); 
+  // :::::: UseStates ::::: //
 
+  const [getOuotes, setGetQuotes] = useState(""); 
+  const [parsedForm, setParsedForm] = useState(null);
+
+
+  // :::::: UseEffect ::::: //
+
+  useEffect(() => {
+    fetchgetQuotes();
+  }, []);
+
+
+  useEffect(() => {
+    if (!getOuotes?.content) return;
+
+    const parsed = parseCF7HTML(getOuotes.content);
+    setParsedForm(parsed);
+
+    console.log("FULL FORM DATA:", parsed);
+  }, [getOuotes]);
+
+
+
+  // :::::: Functions ::::: //
 
   const fetchgetQuotes = async () => {
     try {
        const res = await client.query({
             query: FETCH_GET_QUOTES,
            });
-
-          console.log("Res raw",res.data.pages);
+        setGetQuotes(res.data.pages.nodes[0]);
+        console.log("Res raw",res.data.pages.nodes[0]);
            
     } catch (error) {
       console.error("Error fetching get quotes:", error);
     }
   }
 
-
-  useEffect(() => {
-    fetchgetQuotes();
-  },[])
+ 
+// :::::: Parse Contact Form 7 HTML ::::: //
 
 
+  const parseCF7HTML = (html) => {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
 
+  // FORM
+  const form = doc.querySelector("form");
 
+  // FORM ID
+  const formId =
+    doc.querySelector("[data-wpcf7-id]")?.getAttribute("data-wpcf7-id") || "";
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+  // ALL TEXT PARAGRAPHS (LABELS + DESCRIPTIONS)
+  const paragraphs = [...doc.querySelectorAll("p")]
+    .map(p => p.textContent.trim())
+    .filter(Boolean);
+
+  // HIDDEN FIELDS
+  const hiddenFields = [...doc.querySelectorAll("input[type='hidden']")]
+    .map(i => i.name);
+
+  // INPUTS & TEXTAREAS
+  const fields = [];
+
+  [...doc.querySelectorAll(".wpcf7-form-control-wrap")].forEach(wrap => {
+    const input =
+      wrap.querySelector("input") || wrap.querySelector("textarea");
+
+    if (!input) return;
+
+    // LABEL = nearest previous <p>
+    let label = "";
+    let prev = wrap.closest("p")?.previousElementSibling;
+    if (prev && prev.tagName === "P") {
+      label = prev.textContent.replace("(required)", "").trim();
     }
-    if (showValidationError) {
-      setShowValidationError(false);
-    }
-  };
 
-  const handleSubmit = () => {
-    const newErrors = {};
-    const requiredFields = ['companyName', 'contactPerson', 'contactNumber', 'mobileNumber', 'email', 'subject', 'enquiryDetails'];
-    
-    requiredFields.forEach(field => {
-      if (!formData[field].trim()) {
-        newErrors[field] = 'Please fill the required field.';
-      }
+    fields.push({
+      label,
+      tag: input.tagName.toLowerCase(),
+      type: input.type || "textarea",
+      name: input.name,
+      required: input.classList.contains("wpcf7-validates-as-required"),
+      classes: [...input.classList]
     });
+  });
 
-    // Special email validation
-    if (formData.email.trim() && !/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address.';
-    }
-    
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      setShowValidationError(true);
-    } else {
-      console.log('Form submitted:', formData);
-      alert('Form submitted successfully!');
-      
-      setFormData({
-        companyName: '',
-        contactPerson: '',
-        contactNumber: '',
-        mobileNumber: '',
-        email: '',
-        subject: '',
-        enquiryDetails: ''
-      });
-      setErrors({});
-      setShowValidationError(false);
-    }
+  // SUBMIT BUTTON
+  const submitText =
+    doc.querySelector(".wpcf7-submit")?.value || "Submit";
+
+  return {
+    formId,
+    texts: paragraphs,
+    fields,
+    submitText,
+    hiddenFields
   };
+};
 
-  const renderField = (label, name, type = 'text') => (
-    <div className='flex flex-col w-full gap-3 mt-4 text-gray-700 sm:w-[50%] md:w-full lg:w-[50%]'>
-      <label className='text-sm'>{label} (required)</label>
-      {type === 'textarea' ? (
-        <textarea 
-          name={name}
-          value={formData[name]}
-          onChange={handleChange}
-          className="border border-gray-700 rounded-sm p-2 h-32 resize-none"
-        />
-      ) : (
-        <input 
-          type='text' 
-          name={name}
-          value={formData[name]}
-          onChange={handleChange}
-          className='border-[1px] border-gray-700 rounded-sm h-[30px]'
-        />
-      )}
-      {errors[name] && <p className='text-red-700 text-[13px]'>{errors[name]}</p>}
-    </div>
-  );
+
+
+// :::::: Render ::::: //
+
+if(!getOuotes){
+    return <div>Loading...</div>;
+  }
+
 
   return (
     <div>
@@ -122,39 +127,64 @@ const GetQuotes = () => {
           <div className="about_col_1 w-full shadow-custom_box p-3 rounded bg-white md:shadow-none lg:w-[70%] lg:pe-8">
             <div className="about_head">
               <p className='font-Helvetica text-[20px] font-bold text-[#56565A] mb-5 md:text-[30px]'>
-                Get A Quote
+               {getOuotes?.title}
               </p>
             </div>
             
-            <div className="getQuotesFields">
+            <div className="">
               <p className='text-gray-700 text-sm mb-4'>
-                Please submit the details of query, We will contact you soon.
-              </p>
+                {parsedForm?.texts[0]}
+               </p>
 
-              {renderField('Name of the company', 'companyName')}
+              {parsedForm?.fields?.map((field, index) => (
+                <div key={field.name || index} className="mb-4">
+                  <label className="block text-gray-700 mb-2">
+                    {field.label}
+                    {field.required && <span className="text-red-500">*</span>}
+                  </label>
+
+                  {field.tag === "input" ? (
+                    <input
+                      type={field.type}
+                      name={field.name}
+                      className="w-full lg:w-[50%] border border-gray-300 p-2 rounded"
+                      required={field.required}
+                    />
+                  ) : (
+                    <textarea
+                      name={field.name}
+                      className="w-full lg:w-[50%] border border-gray-300 p-2 rounded"
+                      required={field.required}
+                    />
+                  )}
+                </div>
+              ))}
+
+
+              {/* {renderField('Name of the company', 'companyName')}
               {renderField('Contact Person', 'contactPerson')}
               {renderField('Contact Number', 'contactNumber')}
               {renderField('Mobile Number', 'mobileNumber')}
               {renderField('Email', 'email')}
               {renderField('Subject', 'subject')}
-              {renderField('Enquiry Details', 'enquiryDetails', 'textarea')}
+              {renderField('Enquiry Details', 'enquiryDetails', 'textarea')} */}
 
               <div className='w-[50%] mt-10 flex items-center justify-center text-white'>
                 <button 
-                  onClick={handleSubmit}
+                 
                   className='w-full bg-[#ef3713] hover:bg-[#ff2c02e0] p-2 rounded-md font-extrabold'
                   aria-label="submit button"
                 >
-                  Submit
+                  {parsedForm?.submitText || "Submit.."}
                 </button>
               </div>
-              {showValidationError && (
+              {/* {showValidationError && (
                 <div className='bg-yellow-50 border-2 border-yellow-300 p-2 mb-4 mt-5'>
                   <p className='text-gray-700 text-[13px]'>
                     Validation errors occurred. Please confirm the fields and submit it again.
                   </p>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
 

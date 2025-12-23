@@ -9,7 +9,7 @@ import Quotebar from "@/components/Quotebar";
 
 // Font Awesome setup
 import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
+// import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 
     export const metadata = {
@@ -43,13 +43,12 @@ config.autoAddCss = false;
     return (
       <html lang="en">
         <body>
-
-        <Header />
-        <Banner />
-        <Quotebar/>
-        {children}
-        <Footer />
-      </body>
+          <Header />
+          <Banner />
+          <Quotebar/>
+          {children}
+          <Footer />
+        </body>
       </html>
     )
   }

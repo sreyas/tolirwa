@@ -13,6 +13,7 @@ const Products = () => {
     sections: [],
   });
   const [loading, setLoading] = useState(true);
+  const [title, setTitle] = useState("");
   
 
   useEffect(() => {
@@ -25,7 +26,10 @@ const Products = () => {
         query: PRODUCT_PAGE_CONTENT,
       });
 
+      setTitle( res.data.pageBy.title)
       const html = res.data.pageBy.content;
+      console.log("Htmlll",html);
+      
 
       const result = parseHtmlToJson(html);
 
@@ -129,7 +133,7 @@ const Products = () => {
             </div> */}
 
 
-        <h1 className="text-gray-600 text-3xl font-bold mb-7">Products</h1>
+        <h1 className="text-gray-600 text-3xl font-bold mb-7">{title}</h1>
 
         <div className="flex flex-col lg:flex-row gap-6">
           {/* LEFT COLUMN */}
