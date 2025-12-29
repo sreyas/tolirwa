@@ -16,6 +16,8 @@ export default function Quotebar() {
             height={300}   
             sizes="(max-width: 768px) 150px, 300px"
             quality={100}    
+            loading="lazy"
+            fetchPriority="high"
         />
       </Link>
     </div>
