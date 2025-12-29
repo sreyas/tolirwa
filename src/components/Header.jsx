@@ -116,6 +116,7 @@ return true;
               className={`${isScrolled ? "h-[60px]" : "h-[99%]"} transition-all duration-500`}
               src="https://dev.tolirwa.com/wp-content/themes/sreyas/logo.png"
               alt="Logo"
+              priority 
             />
           </Link>
         </div>

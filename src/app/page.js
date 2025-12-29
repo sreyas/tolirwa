@@ -139,7 +139,7 @@ const Home = () => {
                <div className='img-col-2 w-full
                md:h-[50%]
                '>
-                <img className='w-full md:h-full' src={structuredContent[3]?.text[2]?.src} alt={structuredContent[3]?.text[2]?.alt  || "Tolirwa product image"} />
+                <img className='w-full h-auto' src={structuredContent[3]?.text[2]?.src} alt={structuredContent[3]?.text[2]?.alt  || "Tolirwa product image"} />
               </div>
             </div>
               <div className="cnt-Col-1 w-full p-5 flex flex-col items-center justify-center gap-2">
